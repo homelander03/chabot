@@ -18,7 +18,7 @@ app.get('/',function(req,res)
 {
 	res.send("Hi Iam a chatbot")
 })
-token = "EAADvmNrEZB44BAInhtzSC3M81AgOMylaCtIdmpy0NuPUi2SdHk9UgBkcePB1SdIQuhYvjIyqdS8fsjSkppZCCbqhucoSfW53icBQZCZBt88fVN4tQEUXKWY21cZAKZBi47Sfbz48wD98IW2HS4OS6xZAii1cIm5guqoXJmUEyPK8AZDZD";
+let token = "EAADvmNrEZB44BAInhtzSC3M81AgOMylaCtIdmpy0NuPUi2SdHk9UgBkcePB1SdIQuhYvjIyqdS8fsjSkppZCCbqhucoSfW53icBQZCZBt88fVN4tQEUXKWY21cZAKZBi47Sfbz48wD98IW2HS4OS6xZAii1cIm5guqoXJmUEyPK8AZDZD";
 //FACEBOOK
 app.get('/webhook/',function(req,res)
 {
