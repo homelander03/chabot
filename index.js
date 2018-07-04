@@ -6,8 +6,9 @@ const request = require('request')
 
 const app = express()
 
-app.set('port',(process.env.PORT || 5000))
-
+//app.set('port',(process.env.PORT || 5000))
+let port = process.env.PORT || 1299;
+let host = '0.0.0.0';
 //Allows to process data
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
@@ -29,7 +30,6 @@ app.get('/webhook/',function(req,res)
 })
 
 //Listening the requests
-app.listen(app.get('port'),function()
-{
-	console.log("running: port")
+app.listen(port,host,function(){
+	console.log("running: port",port);
 })
