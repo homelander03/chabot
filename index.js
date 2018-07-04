@@ -30,6 +30,4 @@ app.get('/webhook/',function(req,res)
 })
 
 //Listening the requests
-app.listen(port,host,function(){
-	console.log("running: port",port);
-})
+app.listen( process.env.PORT || 1299);
