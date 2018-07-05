@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 //ROUTES
 app.get('/',function(req,res)
 {
+	console.log("in get");
 	res.send("Hi Iam a chatbot")
 })
 let token = "EAADvmNrEZB44BAInhtzSC3M81AgOMylaCtIdmpy0NuPUi2SdHk9UgBkcePB1SdIQuhYvjIyqdS8fsjSkppZCCbqhucoSfW53icBQZCZBt88fVN4tQEUXKWY21cZAKZBi47Sfbz48wD98IW2HS4OS6xZAii1cIm5guqoXJmUEyPK8AZDZD";
@@ -30,15 +31,18 @@ app.get('/webhook/',function(req,res)
 })
 app.post('/webhook/',function(req,res)
 {
+	console.log("Success");
 	let messaging_events = req.body.entry[0].messaging;
 	for(let i=0 ; i<messaging_events.length ; i++)
 	{
 		let event = messaging_events[i];
 		let sender = event.sender.id;
-		if(event.messaging && event.message.text)
+		console.log(event)
+		if(event.message && event.message.text)
 		{
 			let text = event.message.text;
 			sendText(sender, "Text echo: " + text.substring(0,100))
+			//res.send(text);
 		}
 	}
 	res.sendStatus(200)
@@ -47,7 +51,7 @@ function sendText(sender,text)
 {
 	let messageData = {text:text};
 	request({
-		url:"https://graph.facebook.com/v2.6/me/messages",
+		url:"https://graph.facebook.com/me/messages",
 		qs : {access_token:token},
 		method : "POST",
 		json:{
@@ -65,4 +69,6 @@ function sendText(sender,text)
 	})
 }
 //Listening the requests
-app.listen( process.env.PORT || 1299);
+app.listen( process.env.PORT || 1299,function(){
+	console.log("running");
+});
